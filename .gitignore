@@ -1,9 +1,6 @@
 # Output folder
 lib/
 
-# Configuration files
-config.json
-
 # Logs
 logs
 *.log
