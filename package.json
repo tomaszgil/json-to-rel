@@ -2,8 +2,10 @@
   "name": "json-to-relational",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/cli.js",
   "scripts": {
+    "build": "babel -s inline -d lib src",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec babel-node src/cli.js"
   },
@@ -14,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "bin": {
-    "json-to-relational": "./src/cli.js"
+    "json-to-relational": "lib/cli.js"
   },
   "bugs": {
     "url": "https://github.com/tomaszgil/json-to-relational/issues"
