@@ -1,5 +1,5 @@
-# Output folder
-lib/
+# Source folder
+src/
 
 # Configuration files
 config.json
