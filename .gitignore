@@ -1,6 +1,9 @@
 # Configuration files
 config.json
 
+# Input data folder
+data/
+
 # Logs
 logs
 *.log
