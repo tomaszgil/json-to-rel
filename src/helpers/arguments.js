@@ -1,10 +1,23 @@
 import program from 'commander';
+import handleError from './errors';
+import verifyArgs from './verifyArgs';
 
-// Example
-export default program
-  .version('0.0.1')
-  .option('-o, --option', 'option description')
-  .option('-m, --more', 'we can have as many options as we want')
-  .option('-i, --input [optional]', 'optional user input')
-  .option('-I, --another-input <required>', 'required user input')
+program
+  .version('1.0')
+  .option('-i, --input <file>', 'path to input JSON file')
+  .option('-m, --mode <mode>', 'program mode: "ddl" or "csv"')
+  .option('-o, --output <dir>', 'path to output directory')
+  .on('--help', () => {
+    console.log('');
+    console.log('Example:');
+    console.log('  $ json-to-relational -i ./input.json -m ddl -o ./output');
+  })
   .parse(process.argv);
+
+const result = verifyArgs(program);
+
+if (!result.isValid) {
+  handleError(result.error);
+}
+
+export default program;
