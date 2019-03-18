@@ -1,3 +1,5 @@
+import { NullConstraint } from './Constraint';
+
 class Attribute {
   constructor(name, type, constraints) {
     this.name = name;
@@ -19,6 +21,8 @@ class Attribute {
 
     if (notNull) {
       this.constraints.notNull = notNull;
+    } else {
+      this.constraints.null = new NullConstraint();
     }
   }
 }

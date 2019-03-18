@@ -1,4 +1,4 @@
-export class PrimaryKey {
+export class PrimaryKeyConstraint {
   static get label() {
     return 'PRIMARY KEY';
   }
@@ -8,7 +8,7 @@ export class PrimaryKey {
   }
 }
 
-export class ForeignKey {
+export class ForeignKeyConstraint {
   static get label() {
     return 'FOREIGN KEY REFERENCES';
   }
@@ -23,9 +23,19 @@ export class ForeignKey {
   }
 }
 
-export class NotNull {
+export class NotNullConstraint {
   static get label() {
     return 'NOT NULL';
+  }
+
+  toSQL() {
+    return this.constructor.label;
+  }
+}
+
+export class NullConstraint {
+  static get label() {
+    return 'NULL';
   }
 
   toSQL() {
