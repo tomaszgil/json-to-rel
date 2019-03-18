@@ -14,10 +14,10 @@ program
   })
   .parse(process.argv);
 
-const result = verifyArgs(program);
-
-if (!result.isValid) {
-  handleError(result.error);
+try {
+  verifyArgs(program);
+} catch (e) {
+  handleError(e);
 }
 
 export default program;

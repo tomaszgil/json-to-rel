@@ -1,6 +1,6 @@
 const handleError = (error) => {
-  console.error(error);
+  console.error(error.message);
   process.exit(1);
 };
 
- export default handleError;
+export default handleError;
