@@ -2,10 +2,12 @@ import program from 'commander';
 import handleError from './errors';
 import verifyArgs from './verifyArgs';
 
+const toLowerCase = value => value.toLowerCase();
+
 program
   .version('1.0')
   .option('-i, --input <file>', 'path to input JSON file')
-  .option('-m, --mode <mode>', 'program mode: "ddl" or "csv"')
+  .option('-m, --mode <mode>', 'program mode: "ddl" or "csv"', toLowerCase)
   .option('-o, --output <dir>', 'path to output directory')
   .on('--help', () => {
     console.log('');
