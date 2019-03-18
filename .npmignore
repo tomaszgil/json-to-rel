@@ -1,8 +1,8 @@
-# Output folder
-lib/
+# Source folder
+src/
 
-# Input data folder
-data/
+# Configuration files
+config.json
 
 # Logs
 logs

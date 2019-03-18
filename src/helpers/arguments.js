@@ -1,10 +1,26 @@
 import program from 'commander';
+import handleError from './handleError';
+import verifyArgs from './verifyArgs';
+import constants from '../core/constants';
 
-// Example
-export default program
-  .version('0.0.1')
-  .option('-o, --option', 'option description')
-  .option('-m, --more', 'we can have as many options as we want')
-  .option('-i, --input [optional]', 'optional user input')
-  .option('-I, --another-input <required>', 'required user input')
+const toLowerCase = value => value.toLowerCase();
+
+program
+  .version('1.0')
+  .option('-i, --input <file>', 'path to input JSON file')
+  .option('-m, --mode <mode>', `program mode: "${constants.MODE_DDL}" or "${constants.MODE_CSV}"`, toLowerCase)
+  .option('-o, --output <dir>', 'path to output directory')
+  .on('--help', () => {
+    console.log('');
+    console.log('Example:');
+    console.log('  $ json-to-relational -i ./input.json -m ddl -o ./output');
+  })
   .parse(process.argv);
+
+try {
+  verifyArgs(program);
+} catch (e) {
+  handleError(e);
+}
+
+export default program;
