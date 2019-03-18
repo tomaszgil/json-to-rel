@@ -1,13 +1,14 @@
 import program from 'commander';
 import handleError from './errors';
 import verifyArgs from './verifyArgs';
+import constants from '../core/constants';
 
 const toLowerCase = value => value.toLowerCase();
 
 program
   .version('1.0')
   .option('-i, --input <file>', 'path to input JSON file')
-  .option('-m, --mode <mode>', 'program mode: "ddl" or "csv"', toLowerCase)
+  .option('-m, --mode <mode>', `program mode: "${constants.MODE_DDL}" or "${constants.MODE_CSV}"`, toLowerCase)
   .option('-o, --output <dir>', 'path to output directory')
   .on('--help', () => {
     console.log('');

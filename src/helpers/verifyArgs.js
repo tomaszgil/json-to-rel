@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import constants from '../core/constants';
 
 const verifyArgs = (args) => {
   if (!args.input) {
@@ -24,9 +25,9 @@ const verifyArgs = (args) => {
     throw new Error(`"${args.output}" is not a directory.`);
   }
   if (!args.mode) {
-    throw new Error('You have to specify mode ("ddl" or "csv").');
+    throw new Error(`You have to specify mode ("${constants.MODE_DDL}" or "${constants.MODE_CSV}").`);
   }
-  if (args.mode.toLowerCase() !== 'ddl' && args.mode.toLowerCase() !== 'csv') {
+  if (args.mode !== constants.MODE_DDL && args.mode !== constants.MODE_CSV) {
     throw new Error(`Invalid mode "${args.mode}".`);
   }
 };
