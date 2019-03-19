@@ -11,4 +11,5 @@ const json = parseJson(args.input);
 const schema = createJsonSchema(json);
 const tables = createTables(schema, json);
 
-console.log(util.inspect(schema, { showHidden: false, depth: null }));
+tables.map(table => console.log(table.toDDL()));
+// console.log(util.inspect(schema, { showHidden: false, depth: null }));

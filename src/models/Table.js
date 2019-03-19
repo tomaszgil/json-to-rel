@@ -1,6 +1,6 @@
 import Attribute from './Attribute';
-import { TYPE_DB_NUMBER } from '../core/dbTypes';
-import { PrimaryKey } from './Constraint';
+import { DB_TYPE_NUMBER } from '../core/dbTypes';
+import { PrimaryKeyConstraint, NotNullConstraint } from './Constraint';
 
 class Table {
   constructor(name, attributes) {
@@ -12,12 +12,22 @@ class Table {
   generatePrimaryKey() {
     const primaryKey = new Attribute(
       `_ID_${this.name}`,
-      TYPE_DB_NUMBER,
-      { primaryKey: new PrimaryKey() },
+      DB_TYPE_NUMBER,
+      {
+        primaryKey: new PrimaryKeyConstraint(),
+        notNull: new NotNullConstraint(),
+      },
     );
 
     this.attributes.unshift(primaryKey);
     return primaryKey;
+  }
+
+  toDDL() {
+    const attrString = this.attributes
+      .map(a => `\t${a.toDDL()}`)
+      .join(',\n');
+    return `CREATE TABLE ${this.name} (\n${attrString}\n)`;
   }
 }
 

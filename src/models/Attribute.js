@@ -5,6 +5,7 @@ class Attribute {
     this.name = name;
     this.type = type;
 
+    this.constraints = {};
     this.addConstraints(constraints);
   }
 
@@ -24,6 +25,12 @@ class Attribute {
     } else {
       this.constraints.null = new NullConstraint();
     }
+  }
+
+  toDDL() {
+    const constraintsString = Object.keys(this.constraints)
+      .map(c => this.constraints[c].toDDL());
+    return `${this.name} ${this.type} ${constraintsString}`;
   }
 }
 

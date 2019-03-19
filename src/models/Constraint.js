@@ -3,7 +3,7 @@ export class PrimaryKeyConstraint {
     return 'PRIMARY KEY';
   }
 
-  toSQL() {
+  toDDL() {
     return this.constructor.label;
   }
 }
@@ -18,7 +18,7 @@ export class ForeignKeyConstraint {
     this.field = field;
   }
 
-  toSQL() {
+  toDDL() {
     return `${this.constructor.label} ${this.table}(${this.field})`;
   }
 }
@@ -28,7 +28,7 @@ export class NotNullConstraint {
     return 'NOT NULL';
   }
 
-  toSQL() {
+  toDDL() {
     return this.constructor.label;
   }
 }
@@ -38,7 +38,7 @@ export class NullConstraint {
     return 'NULL';
   }
 
-  toSQL() {
+  toDDL() {
     return this.constructor.label;
   }
 }

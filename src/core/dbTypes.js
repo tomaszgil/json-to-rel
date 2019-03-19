@@ -1,2 +1,2 @@
-export const TYPE_DB_VARCHAR = 'VARCHAR';
-export const TYPE_DB_NUMBER = 'NUMBER';
+export const DB_TYPE_VARCHAR = 'VARCHAR';
+export const DB_TYPE_NUMBER = 'NUMBER';
