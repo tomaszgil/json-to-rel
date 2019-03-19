@@ -27,7 +27,7 @@ class Table {
     const attrString = this.attributes
       .map(a => `\t${a.toDDL()}`)
       .join(',\n');
-    return `CREATE TABLE ${this.name} (\n${attrString}\n)`;
+    return `CREATE TABLE ${this.name} (\n${attrString}\n);`;
   }
 }
 

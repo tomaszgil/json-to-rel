@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import util from 'util';
+
+// import util from 'util';
 import args from './helpers/arguments';
 // import logger from './helpers/logger';
 import printResult from './helpers/printResult';
