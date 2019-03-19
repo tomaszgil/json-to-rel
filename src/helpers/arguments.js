@@ -1,5 +1,5 @@
 import program from 'commander';
-import handleError from './errors';
+import handleError from './handleError';
 import verifyArgs from './verifyArgs';
 import constants from '../core/constants';
 

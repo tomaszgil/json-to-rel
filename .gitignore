@@ -1,6 +1,9 @@
 # Output folder
 lib/
 
+# Input data folder
+data/
+
 # Logs
 logs
 *.log
