@@ -4,13 +4,16 @@
 
 ## Development
 1.  Install dependencies with `npm install`.
+
 2.  Run script with nodemon `npm start`.
     If you want to pass arguments to the script please use the following command with full parameter flags
     `npm start -- --input /path/to/input --mode ddl --output /path/to/output`.
 
 ## Building
 1.  Simulate package installation with `npm link`.
-2.  Run the program with `json-to-relational` command followed by arguments.
+
+1.  Run the program with `json-to-relational` command followed by arguments.
+
 3.  Remove package with `npm unlink`.
 
 ## Publishing
