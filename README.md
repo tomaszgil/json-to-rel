@@ -11,9 +11,7 @@
 
 ## Building
 1.  Simulate package installation with `npm link`.
-
-1.  Run the program with `json-to-relational` command followed by arguments.
-
+2.  Run the program with `json-to-relational` command followed by arguments.
 3.  Remove package with `npm unlink`.
 
 ## Publishing
