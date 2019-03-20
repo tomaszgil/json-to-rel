@@ -1,3 +1,4 @@
 {
-  "inputFileEncoding": "utf8"
+  "inputFileEncoding": "utf8",
+  "outputFileName": "tables.ddl"
 }
