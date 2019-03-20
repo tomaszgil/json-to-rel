@@ -1,4 +1,4 @@
-import { NullConstraint } from './Constraint';
+import NullConstraint from './NullConstraint';
 
 class Attribute {
   constructor(name, type, constraints) {

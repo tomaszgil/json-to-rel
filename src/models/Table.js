@@ -1,6 +1,7 @@
 import Attribute from './Attribute';
 import { DB_TYPE_NUMBER } from '../core/dbTypes';
-import { PrimaryKeyConstraint, NotNullConstraint } from './Constraint';
+import PrimaryKeyConstraint from './PrimaryKeyConstraint';
+import NotNullConstraint from './NotNullConstraint';
 
 class Table {
   constructor(name, attributes) {

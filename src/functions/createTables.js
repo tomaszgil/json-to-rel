@@ -1,7 +1,8 @@
 import generateName from '../helpers/generateName';
 import Table from '../models/Table';
 import Attribute from '../models/Attribute';
-import { NotNullConstraint, ForeignKeyConstraint } from '../models/Constraint';
+import NotNullConstraint from '../models/NotNullConstraint';
+import ForeignKeyConstraint from '../models/ForeignKeyConstraint';
 
 import {
   DB_TYPE_VARCHAR, DB_TYPE_NUMBER,
