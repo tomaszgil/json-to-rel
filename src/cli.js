@@ -7,11 +7,11 @@ import saveResult from './helpers/saveResult';
 
 import parseJson from './processing/parseJson';
 import createJsonSchema from './processing/createJsonSchema';
-import createTables from './processing/createTables';
+import SchemaProcessor from './processing/SchemaProcessor';
 
 const json = parseJson(args.input);
 const schema = createJsonSchema(json);
-const tables = createTables(schema, json);
+const tables = new SchemaProcessor(schema, json).process();
 
 saveResult(tables, args.mode, args.output);
 // console.log(util.inspect(schema, { showHidden: false, depth: null }));
