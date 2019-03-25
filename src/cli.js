@@ -5,9 +5,9 @@ import args from './helpers/arguments';
 // import logger from './helpers/logger';
 import saveResult from './helpers/saveResult';
 
-import parseJson from './functions/parseJson';
-import createJsonSchema from './functions/createJsonSchema';
-import createTables from './functions/createTables';
+import parseJson from './processing/parseJson';
+import createJsonSchema from './processing/createJsonSchema';
+import createTables from './processing/createTables';
 
 const json = parseJson(args.input);
 const schema = createJsonSchema(json);
