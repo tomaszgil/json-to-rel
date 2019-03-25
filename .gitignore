@@ -1,6 +1,9 @@
 # Output folder
 lib/
 
+# Output data files
+*.ddl
+
 # Input data folder
 data/
 
