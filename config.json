@@ -2,5 +2,7 @@
   "inputFileEncoding": "utf8",
   "outputFileName": "tables.ddl",
   "rootTableName": "GENERATED",
-  "surrogatePrimaryKeyName": "__ID"
+  "surrogatePrimaryKeyName": "__ID",
+  "logLevel": 0,
+  "logFile": "json2rel.log"
 }
