@@ -18,6 +18,10 @@ program
   })
   .parse(process.argv);
 
+if (!program.logging) {
+  program.logging = false;
+}
+
 try {
   verifyArgs(program);
 } catch (e) {

@@ -3,9 +3,9 @@ import fs from 'fs';
 import { hostname } from 'os';
 
 class Logger {
- constructor (enabled, file, logLevel) {
+  constructor(enabled, file, logLevel) {
     this.enabled = enabled;
-    this.logLevel = isNaN(logLevel) ? 0 : logLevel;
+    this.logLevel = Number.isNaN(logLevel) ? 0 : logLevel;
 
     if (file) {
       this.logToFile = true;
@@ -18,7 +18,7 @@ class Logger {
 
   log(message) {
     if (!this.enabled || this.logLevel < message.logLevel) {
-      return; 
+      return;
     }
 
     this.writeToConsole(message);
@@ -28,16 +28,16 @@ class Logger {
     }
   }
 
-  prepareMessage(message) {
+  static prepareMessage(message) {
     return `${new Date().toLocaleString()} - ${hostname()} - ${message.logLevel} - ${message.text}\n`;
   }
 
   writeToConsole(message) {
-    console.log(this.prepareMessage(message));
+    console.log(this.constructor.prepareMessage(message));
   }
-  
+
   writeToFile(message) {
-    fs.appendFileSync(this.file, this.prepareMessage(message));
+    fs.appendFileSync(this.file, this.constructor.prepareMessage(message));
   }
 }
 

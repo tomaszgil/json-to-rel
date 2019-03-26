@@ -30,9 +30,6 @@ const verifyArgs = (args) => {
   if (args.mode !== MODE_DDL && args.mode !== MODE_CSV) {
     throw new Error(`Invalid mode "${args.mode}".`);
   }
-  if (!args.logging) {
-    args.logging = false;
-  }
 };
 
 export default verifyArgs;

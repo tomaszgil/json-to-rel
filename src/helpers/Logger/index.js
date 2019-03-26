@@ -8,5 +8,5 @@ const LoggerInstance = new Logger(args.logging, logFile, logLevel);
 
 export {
   LoggerInstance as default,
-  LogMessage
+  LogMessage,
 };
