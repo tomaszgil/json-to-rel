@@ -1,4 +1,6 @@
 {
   "inputFileEncoding": "utf8",
-  "outputFileName": "tables.ddl"
+  "outputFileName": "tables.ddl",
+  "rootTableName": "GENERATED",
+  "surrogatePrimaryKeyName": "__ID"
 }

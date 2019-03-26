@@ -3,16 +3,23 @@ import { DB_TYPE_NUMBER } from '../core/dbTypes';
 import PrimaryKeyConstraint from './PrimaryKeyConstraint';
 import NotNullConstraint from './NotNullConstraint';
 
+import { surrogatePrimaryKeyName } from '../../config.json';
+
 class Table {
-  constructor(name, attributes) {
+  constructor(name) {
     this.name = name;
-    this.attributes = attributes;
-    this.primaryKey = this.generatePrimaryKey();
+    this.attributes = [];
+    this.primaryKey = Table.generatePrimaryKey();
+    this.attributes.unshift(this.primaryKey);
   }
 
-  generatePrimaryKey() {
+  setAttributes(attributes) {
+    this.attributes = [this.primaryKey, ...attributes];
+  }
+
+  static generatePrimaryKey() {
     const primaryKey = new Attribute(
-      `_ID_${this.name}`,
+      surrogatePrimaryKeyName,
       DB_TYPE_NUMBER,
       {
         primaryKey: new PrimaryKeyConstraint(),
@@ -20,7 +27,6 @@ class Table {
       },
     );
 
-    this.attributes.unshift(primaryKey);
     return primaryKey;
   }
 
