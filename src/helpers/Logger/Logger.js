@@ -1,5 +1,6 @@
 import path from 'path';
 import fs from 'fs';
+import { hostname } from 'os';
 
 class Logger {
  constructor (enabled, file, logLevel) {
@@ -8,7 +9,7 @@ class Logger {
 
     if (file) {
       this.logToFile = true;
-      this.file = path.join(__dirname, '../..', file);
+      this.file = path.join(path.dirname(require.main.filename), '../', file);
     } else {
       this.logToFile = false;
       this.file = '';
@@ -16,7 +17,7 @@ class Logger {
   }
 
   log(message) {
-    if (!this.enabled || this.logLevel > message.logLevel) {
+    if (!this.enabled || this.logLevel < message.logLevel) {
       return; 
     }
 
@@ -28,7 +29,7 @@ class Logger {
   }
 
   prepareMessage(message) {
-    return `${new Date().toLocaleString()} - ${message.logLevel} - ${message.text}\n`;
+    return `${new Date().toLocaleString()} - ${hostname()} - ${message.logLevel} - ${message.text}\n`;
   }
 
   writeToConsole(message) {
