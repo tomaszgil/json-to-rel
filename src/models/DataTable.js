@@ -4,6 +4,11 @@ class Decorator extends Table {
   constructor(component) {
     super();
     this.component = component;
+
+    Object.getOwnPropertyNames(component)
+      .forEach((name) => {
+        this[name] = component[name];
+      });
   }
 
   setAttributes(attributes) {
