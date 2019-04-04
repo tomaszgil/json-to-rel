@@ -36,6 +36,10 @@ class Table {
       .join(',\n');
     return `CREATE TABLE ${this.name} (\n${attrString}\n);`;
   }
+
+  toCSV() {
+    return '';
+  }
 }
 
 export default Table;
