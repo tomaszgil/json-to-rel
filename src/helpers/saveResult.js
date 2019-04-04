@@ -5,7 +5,7 @@ import { outputFileName } from '../../config.json';
 const saveResult = (tables, mode, path) => {
   switch (mode) {
     case MODE_CSV: {
-      tables.forEarch((table) => {
+      tables.forEach((table) => {
         const result = table.toCSV();
         fs.writeFileSync(`${path}/${table.name}.csv`, result);
       });

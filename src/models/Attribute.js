@@ -33,6 +33,10 @@ class Attribute {
       .join(' ');
     return `${this.name} ${this.type} ${constraintsString}`;
   }
+
+  toCSV() {
+    return this.name;
+  }
 }
 
 export default Attribute;
