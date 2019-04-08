@@ -12,8 +12,7 @@ import Logger, { LogMessage } from './helpers/Logger';
 
 Logger.log(new LogMessage('Processing started.'));
 
-const json = parseJson(args.input);
-preprocess(json);
+const json = preprocess(parseJson(args.input));
 const schema = createJsonSchema(json);
 const tables = new SchemaProcessor(schema, json).process();
 
