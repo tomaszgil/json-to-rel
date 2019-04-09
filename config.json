@@ -4,5 +4,6 @@
   "rootTableName": "GENERATED",
   "surrogatePrimaryKeyName": "__ID",
   "logLevel": 0,
-  "logFile": "json2rel.log"
+  "logFile": "json2rel.log",
+  "generatedAttributeName": "value"
 }
