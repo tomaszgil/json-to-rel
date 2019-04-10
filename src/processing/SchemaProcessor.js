@@ -65,7 +65,7 @@ class SchemaProcessor {
       );
 
       attributes.unshift(new Attribute(
-        `${parentName}${surrogatePrimaryKeyName}`,
+        ForeignKeyConstraint.getAttributeName(parentName),
         parentKey.type,
         {
           foreignKey: new ForeignKeyConstraint(parentName, parentKey.name),

@@ -29,6 +29,21 @@ class DataTable extends Decorator {
   constructor(table, data) {
     super(table);
     this.data = data || [];
+    this.id = 1;
+  }
+
+  createRecord(values) {
+    const record = this.attributes.map((attr) => {
+      if (attr.constraints.primaryKey) {
+        const { id } = this;
+        this.id++;
+        return id;
+      }
+
+      return values[attr.name] || null;
+    });
+
+    this.data.push(record);
   }
 
   toCSV() {
