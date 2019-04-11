@@ -3,14 +3,13 @@ import { DB_TYPE_NUMBER } from '../core/dbTypes';
 import PrimaryKeyConstraint from './PrimaryKeyConstraint';
 import NotNullConstraint from './NotNullConstraint';
 
-import { surrogatePrimaryKeyName } from '../../config.json';
+import { surrogatePrimaryKeyName, csvDelimiters } from '../../config.json';
 
 class Table {
   constructor(name) {
     this.name = name;
-    this.attributes = [];
     this.primaryKey = Table.generatePrimaryKey();
-    this.attributes.unshift(this.primaryKey);
+    this.attributes = [this.primaryKey];
   }
 
   setAttributes(attributes) {
@@ -35,6 +34,13 @@ class Table {
       .map(a => `\t${a.toDDL()}`)
       .join(',\n');
     return `CREATE TABLE ${this.name} (\n${attrString}\n);`;
+  }
+
+  toCSV() {
+    const { col } = csvDelimiters;
+    return this.attributes
+      .map(a => a.toCSV())
+      .join(col);
   }
 }
 

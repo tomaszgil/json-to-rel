@@ -3,7 +3,7 @@ import Attribute from '../models/Attribute';
 import NotNullConstraint from '../models/NotNullConstraint';
 import ForeignKeyConstraint from '../models/ForeignKeyConstraint';
 
-import { rootTableName, surrogatePrimaryKeyName } from '../../config.json';
+import { rootTableName } from '../../config.json';
 
 import {
   DB_TYPE_VARCHAR, DB_TYPE_NUMBER,
@@ -13,32 +13,31 @@ import {
 } from '../core/schemaTypes';
 
 class SchemaProcessor {
-  constructor(schema, json) {
+  constructor(schema) {
     this.tables = [];
     this.schema = schema;
-    this.json = json;
   }
 
   process() {
-    this.processNode(rootTableName, null, null, this.schema, this.json);
+    this.processNode(rootTableName, null, null, this.schema);
     return this.tables;
   }
 
-  processAttributes(properties, required, table, json) {
+  processAttributes(properties, required, table) {
     return Object
       .keys(properties)
       .map(key => this.processNode(
-        key, required.includes(key), table, properties[key], json,
+        key, required.includes(key), table, properties[key],
       ))
       .filter(attr => attr);
   }
 
-  processNode(name, req, parentTable, schema, json) {
+  processNode(name, req, parentTable, schema) {
     if (schema.type === TYPE_OBJECT) {
       const { properties } = schema;
       const table = new Table(name);
       const attributes = this.processAttributes(
-        properties, Object.keys(properties), table, json,
+        properties, Object.keys(properties), table,
       );
       table.setAttributes(attributes);
       this.tables.push(table);
@@ -61,11 +60,11 @@ class SchemaProcessor {
       const { required, properties } = schema.items;
       const table = new Table(name);
       const attributes = this.processAttributes(
-        properties, required, table, json,
+        properties, required, table,
       );
 
       attributes.unshift(new Attribute(
-        `${parentName}${surrogatePrimaryKeyName}`,
+        ForeignKeyConstraint.getAttributeName(parentName),
         parentKey.type,
         {
           foreignKey: new ForeignKeyConstraint(parentName, parentKey.name),

@@ -5,5 +5,9 @@
   "surrogatePrimaryKeyName": "__ID",
   "logLevel": 0,
   "logFile": "json2rel.log",
+  "csvDelimiters": {
+    "col": ";",
+    "row": "\n"
+  },
   "generatedAttributeName": "value"
 }
