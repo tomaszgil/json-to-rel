@@ -4,7 +4,7 @@ import args from './helpers/arguments';
 import saveResult from './helpers/saveResult';
 
 import parseJson from './processing/parseJson';
-import preprocess from './processing/preprocessing';
+import preprocess from './processing/preprocess';
 import createJsonSchema from './processing/createJsonSchema';
 import createResult from './processing/createResult';
 import Logger, { LogMessage } from './helpers/Logger';
