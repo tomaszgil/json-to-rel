@@ -8,5 +8,6 @@
   "csvDelimiters": {
     "col": ";",
     "row": "\n"
-  }
+  },
+  "generatedAttributeName": "value"
 }
