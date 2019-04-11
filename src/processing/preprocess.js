@@ -9,10 +9,9 @@ const preprocess = (json) => {
     if (Array.isArray(processed[key]) || isObject(processed[key])) {
       processed[key] = preprocess(processed[key]);
     } else if (Array.isArray(processed)) {
-      const value = processed[key];
-
-      processed[key] = {};
-      processed[key][generatedAttributeName] = value;
+      processed[key] = {
+        [generatedAttributeName]: processed[key],
+      };
     }
   });
 
