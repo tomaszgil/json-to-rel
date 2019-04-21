@@ -2,7 +2,7 @@ import { surrogatePrimaryKeyName } from '../../config.json';
 
 export default class ForeignKeyConstraint {
   static get label() {
-    return 'FOREIGN KEY REFERENCES';
+    return 'REFERENCES';
   }
 
   static getAttributeName(tableName) {
