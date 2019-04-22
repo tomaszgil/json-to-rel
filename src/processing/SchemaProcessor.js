@@ -6,7 +6,7 @@ import ForeignKeyConstraint from '../models/ForeignKeyConstraint';
 import { rootTableName } from '../../config.json';
 
 import {
-  DB_TYPE_VARCHAR, DB_TYPE_NUMBER,
+  DB_TYPE_STRING, DB_TYPE_NUMBER,
 } from '../core/dbTypes';
 import {
   TYPE_OBJECT, TYPE_STRING, TYPE_ARRAY, TYPE_NUMBER,
@@ -84,13 +84,13 @@ class SchemaProcessor {
     }
 
     if (schema.type === TYPE_STRING) {
-      return new Attribute(name, DB_TYPE_VARCHAR, {
+      return new Attribute(name, DB_TYPE_STRING, {
         notNull: req && new NotNullConstraint(),
       });
     }
 
     // String as a fallback
-    return new Attribute(name, DB_TYPE_VARCHAR, {
+    return new Attribute(name, DB_TYPE_STRING, {
       notNull: req && new NotNullConstraint(),
     });
   }
