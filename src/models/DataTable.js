@@ -40,7 +40,7 @@ class DataTable extends Decorator {
         return id;
       }
 
-      return values[attr.name] || null;
+      return (attr.name in values) ? values[attr.name] : null;
     });
 
     this.data.push(record);
