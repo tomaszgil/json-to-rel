@@ -17,7 +17,7 @@ class Logger {
   }
 
   log(message) {
-    if (!this.enabled || this.logLevel < message.logLevel) {
+    if (!this.enabled || this.logLevel >= message.logLevel) {
       return;
     }
 
@@ -29,7 +29,7 @@ class Logger {
   }
 
   static prepareMessage(message) {
-    return `${new Date().toLocaleString()} - ${hostname()} - ${message.logLevel} - ${message.text}\n`;
+    return `${new Date().toLocaleString()} - ${hostname()} - ${message.logLevel} - ${message.text}`;
   }
 
   writeToConsole(message) {
