@@ -19,25 +19,27 @@ class SchemaProcessor {
   }
 
   process() {
-    this.processNode(rootTableName, null, null, this.schema);
+    this.processNode(rootTableName, '', null, null, this.schema);
     return this.tables;
   }
 
-  processAttributes(properties, required, table) {
+  processAttributes(properties, required, table, path) {
     return Object
       .keys(properties)
       .map(key => this.processNode(
-        key, required.includes(key), table, properties[key],
+        key, path, required.includes(key), table, properties[key],
       ))
       .filter(attr => attr);
   }
 
-  processNode(name, req, parentTable, schema) {
+  processNode(name, path, req, parentTable, schema) {
+    const nextPath = path ? `${path}_${name}` : name;
+
     if (schema.type === TYPE_OBJECT) {
       const { properties } = schema;
-      const table = new Table(name);
+      const table = new Table(nextPath);
       const attributes = this.processAttributes(
-        properties, Object.keys(properties), table,
+        properties, Object.keys(properties), table, nextPath,
       );
       table.setAttributes(attributes);
       this.tables.push(table);
@@ -58,9 +60,9 @@ class SchemaProcessor {
     if (schema.type === TYPE_ARRAY) {
       const { primaryKey: parentKey, name: parentName } = parentTable;
       const { required, properties } = schema.items;
-      const table = new Table(name);
+      const table = new Table(nextPath);
       const attributes = this.processAttributes(
-        properties, required, table,
+        properties, required, table, nextPath,
       );
 
       attributes.unshift(new Attribute(

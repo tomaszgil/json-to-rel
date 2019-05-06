@@ -3,10 +3,17 @@ import { DB_TYPE_NUMBER } from '../core/dbTypes';
 import PrimaryKeyConstraint from './PrimaryKeyConstraint';
 import NotNullConstraint from './NotNullConstraint';
 
+import Logger, { LogMessage } from '../helpers/Logger';
 import { surrogatePrimaryKeyName, csvDelimiters } from '../../config.json';
 
 class Table {
   constructor(name) {
+    Logger.log(new LogMessage(`Table ${name} created.`, 1));
+
+    if (name.length > 64) {
+      Logger.log(new LogMessage('Maximum table name length exceeded.', 2));
+    }
+
     this.name = name;
     this.primaryKey = Table.generatePrimaryKey();
     this.attributes = [this.primaryKey];

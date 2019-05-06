@@ -19,13 +19,15 @@ class SchemaProcessor {
   }
 
   process() {
-    this.processNode(rootTableName, this.json);
+    this.processNode(rootTableName, this.json, '');
     return this.dataTables;
   }
 
-  processNode(name, json, parentName, parentKey) {
+  processNode(name, json, path, parentName, parentKey) {
+    const nextPath = `${path}_${name}`;
+
     if (isObject(json)) {
-      const table = this.findTableByName(name);
+      const table = this.findTableByName(nextPath);
       const { id } = table;
       const values = {};
 
@@ -44,7 +46,7 @@ class SchemaProcessor {
     }
 
     if (Array.isArray(json)) {
-      json.forEach(value => this.processNode(name, value, parentName, parentKey));
+      json.forEach(value => this.processNode(name, value, nextPath, parentName, parentKey));
       return null;
     }
 
