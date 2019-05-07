@@ -1,5 +1,5 @@
 import Attribute from './Attribute';
-import { DB_TYPE_NUMBER } from '../core/dbTypes';
+import { DB_TYPE_INTEGER } from '../core/dbTypes';
 import PrimaryKeyConstraint from './PrimaryKeyConstraint';
 import NotNullConstraint from './NotNullConstraint';
 
@@ -19,7 +19,7 @@ class Table {
   static generatePrimaryKey() {
     const primaryKey = new Attribute(
       surrogatePrimaryKeyName,
-      DB_TYPE_NUMBER,
+      DB_TYPE_INTEGER,
       {
         primaryKey: new PrimaryKeyConstraint(),
         notNull: new NotNullConstraint(),

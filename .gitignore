@@ -2,7 +2,7 @@
 lib/
 
 # Output data files
-*.ddl
+*.sql
 
 # Input data folder
 data/
