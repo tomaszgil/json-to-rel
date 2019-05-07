@@ -5,16 +5,18 @@ import NotNullConstraint from './NotNullConstraint';
 
 import Logger, { LogMessage } from '../helpers/Logger';
 import { surrogatePrimaryKeyName, csvDelimiters } from '../../config.json';
+import createTableName from '../helpers/createTableName';
+import { MAX_TABLE_NAME_LENGTH } from '../core/dbConstants';
 
 class Table {
-  constructor(name) {
-    Logger.log(new LogMessage(`Table ${name} created.`, 1));
+  constructor(name, path) {
+    this.name = createTableName(name, path);
 
-    if (name.length > 64) {
+    Logger.log(new LogMessage(`Table ${this.name} created.`, 1));
+    if (this.name.length > MAX_TABLE_NAME_LENGTH) {
       Logger.log(new LogMessage('Maximum table name length exceeded.', 2));
     }
 
-    this.name = name;
     this.primaryKey = Table.generatePrimaryKey();
     this.attributes = [this.primaryKey];
   }

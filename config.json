@@ -9,5 +9,6 @@
     "col": ";",
     "row": "\n"
   },
-  "generatedAttributeName": "value"
+  "generatedAttributeName": "value",
+  "truncateTableName": true
 }

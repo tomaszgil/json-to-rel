@@ -1,9 +1,10 @@
 import NullConstraint from './NullConstraint';
 import Logger, { LogMessage } from '../helpers/Logger';
+import { MAX_TABLE_NAME_LENGTH } from '../core/dbConstants';
 
 class Attribute {
   constructor(name, type, constraints) {
-    if (name.length > 64) {
+    if (name.length > MAX_TABLE_NAME_LENGTH) {
       Logger.log(new LogMessage('Maximum attribute name length exceeded.', 2));
     }
 
