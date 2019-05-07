@@ -10,5 +10,5 @@
     "row": "\n"
   },
   "generatedAttributeName": "value",
-  "truncateTableName": true
+  "truncateTableName": false
 }
