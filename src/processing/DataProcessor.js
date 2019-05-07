@@ -3,6 +3,7 @@ import ForeignKeyConstraint from '../models/ForeignKeyConstraint';
 
 import isObject from '../helpers/isObject';
 import { rootTableName } from '../../config.json';
+import createTableName from '../helpers/createTableName';
 
 class SchemaProcessor {
   constructor(tables, json) {
@@ -23,11 +24,9 @@ class SchemaProcessor {
     return this.dataTables;
   }
 
-  processNode(name, json, path, parentName, parentKey) {
-    const nextPath = `${path}_${name}`;
-
+  processNode(name, json, parentName, parentKey) {
     if (isObject(json)) {
-      const table = this.findTableByName(nextPath);
+      const table = this.findTableByName(createTableName(name, parentName));
       const { id } = table;
       const values = {};
 
@@ -46,7 +45,7 @@ class SchemaProcessor {
     }
 
     if (Array.isArray(json)) {
-      json.forEach(value => this.processNode(name, value, nextPath, parentName, parentKey));
+      json.forEach(value => this.processNode(name, value, parentName, parentKey));
       return null;
     }
 
