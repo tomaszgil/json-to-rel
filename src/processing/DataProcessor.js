@@ -49,6 +49,10 @@ class SchemaProcessor {
       return null;
     }
 
+    if (typeof json === 'boolean') {
+      return json ? 1 : 0;
+    }
+
     return json;
   }
 }

@@ -6,10 +6,10 @@ import ForeignKeyConstraint from '../models/ForeignKeyConstraint';
 import { rootTableName } from '../../config.json';
 
 import {
-  DB_TYPE_STRING, DB_TYPE_NUMBER,
+  DB_TYPE_STRING, DB_TYPE_NUMBER, DB_TYPE_INTEGER,
 } from '../core/dbTypes';
 import {
-  TYPE_OBJECT, TYPE_STRING, TYPE_ARRAY, TYPE_NUMBER,
+  TYPE_OBJECT, TYPE_STRING, TYPE_ARRAY, TYPE_NUMBER, TYPE_BOOLEAN,
 } from '../core/schemaTypes';
 
 class SchemaProcessor {
@@ -85,6 +85,12 @@ class SchemaProcessor {
 
     if (schema.type === TYPE_NUMBER) {
       return new Attribute(name, DB_TYPE_NUMBER, {
+        notNull: req && new NotNullConstraint(),
+      });
+    }
+
+    if (schema.type === TYPE_BOOLEAN) {
+      return new Attribute(name, DB_TYPE_INTEGER, {
         notNull: req && new NotNullConstraint(),
       });
     }
