@@ -14,7 +14,7 @@ program
   .on('--help', () => {
     console.log('');
     console.log('Example:');
-    console.log('  $ json-to-relational -i ./input.json -m ddl -o ./output -l');
+    console.log('  $ json-to-sql -i ./input.json -m ddl -o ./output -l');
   })
   .parse(process.argv);
 

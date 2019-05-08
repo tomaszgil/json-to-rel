@@ -1,6 +1,6 @@
-# json-to-relational
+# json-to-sql
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e1a3949af43d4a24a8fc35bcf8e1a957)](https://app.codacy.com/app/tomaszgil_2/json-to-relational?utm_source=github.com&utm_medium=referral&utm_content=tomaszgil/json-to-relational&utm_campaign=Badge_Grade_Settings)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1982b37edf4d44a0be92a2ffd304115b)](https://www.codacy.com/app/tomaszgil_2/json-to-sql?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tomaszgil/json-to-sql&amp;utm_campaign=Badge_Grade)
 
 ## Development
 1.  Install dependencies with `npm install`.
@@ -11,7 +11,7 @@
 
 ## Building
 1.  Simulate package installation with `npm link`.
-2.  Run the program with `json-to-relational` command followed by arguments.
+2.  Run the program with `json-to-sql` command followed by arguments.
 3.  Remove package with `npm unlink`.
 
 ## Publishing
