@@ -29,7 +29,7 @@ class Logger {
   }
 
   static prepareMessage(message) {
-    return `${new Date().toLocaleString()} - ${hostname()} - ${message.logLevel} - ${message.text}\n`;
+    return `${new Date().toLocaleString()} - ${hostname()} - ${message.logLevel} - ${message.text}`;
   }
 
   writeToConsole(message) {
@@ -37,7 +37,7 @@ class Logger {
   }
 
   writeToFile(message) {
-    fs.appendFileSync(this.file, this.constructor.prepareMessage(message));
+    fs.appendFileSync(this.file, `${this.constructor.prepareMessage(message)}\n`);
   }
 }
 

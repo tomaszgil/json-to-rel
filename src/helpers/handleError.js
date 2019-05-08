@@ -1,5 +1,7 @@
+import Logger, { LogMessage } from './Logger';
+
 const handleError = (error) => {
-  console.error(error.message);
+  Logger.log(new LogMessage(error.message));
   process.exit(1);
 };
 
