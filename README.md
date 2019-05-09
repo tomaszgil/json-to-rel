@@ -4,7 +4,7 @@
 
 > Transform JSON data object to relational form (sql or csv)
 
-This package allows you to transform valid json object to relational form. The output of the application can be in a form of one `sql` file with `create table` statements or a set of `csv` files, with file names corresponding to table names.
+This package allows you to transform valid json object to relational form. The output of the application can be in a form of one `.sql` file with `create table` statements or a set of `.csv` files, with file names corresponding to table names.
 
 ## Install
 
@@ -41,10 +41,11 @@ json-to-sql -i input-file.json -m sql -o output-dir/
 ### Ouput
 1.  **SQL**
     
-    dsadasdad
+    A `.sql` file with set of `create table` statements representing relational tables mapped from json object. Each table featutes a surrogate primary key. Tables are connected with foreign key constraints. Syntax is compliant with `Sqlite 3`.
 
 1.  **CSV**
 
+    A set of `.csv` files with set with file names corresponding to table names. Each file contains a header with table column names and rows which correspond to table records with values from input json object.
 
 ### Configutation file
 
