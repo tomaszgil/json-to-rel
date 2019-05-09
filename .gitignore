@@ -3,6 +3,7 @@ lib/
 
 # Output data files
 *.sql
+*.csv
 
 # Input data folder
 data/
