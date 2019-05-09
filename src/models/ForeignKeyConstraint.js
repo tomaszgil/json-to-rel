@@ -14,7 +14,7 @@ export default class ForeignKeyConstraint {
     this.field = field;
   }
 
-  toDDL() {
+  toSQL() {
     return `${this.constructor.label} ${this.table}(${this.field})`;
   }
 }

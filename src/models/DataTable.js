@@ -20,8 +20,8 @@ class Decorator extends Table {
     return Table.generatePrimaryKey();
   }
 
-  toDDL() {
-    return this.component.toDDL();
+  toSQL() {
+    return this.component.toSQL();
   }
 }
 

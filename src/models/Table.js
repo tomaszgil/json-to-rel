@@ -29,9 +29,9 @@ class Table {
     return primaryKey;
   }
 
-  toDDL() {
+  toSQL() {
     const attrString = this.attributes
-      .map(a => `\t${a.toDDL()}`)
+      .map(a => `\t${a.toSQL()}`)
       .join(',\n');
     return `CREATE TABLE ${this.name} (\n${attrString}\n);`;
   }

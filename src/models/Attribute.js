@@ -27,9 +27,9 @@ class Attribute {
     }
   }
 
-  toDDL() {
+  toSQL() {
     const constraintsString = Object.keys(this.constraints)
-      .map(c => this.constraints[c].toDDL())
+      .map(c => this.constraints[c].toSQL())
       .join(' ');
     return `${this.name} ${this.type} ${constraintsString}`;
   }
