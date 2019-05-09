@@ -13,7 +13,16 @@
     "type": "git",
     "url": "git+https://github.com/tomaszgil/json-to-sql.git"
   },
-  "author": "",
+  "contributors": [
+    {
+      "name" : "Tomasz Gil",
+      "email" : "tomaszgil@hotmail.com"
+    },
+    {
+      "name" : "Łukasz Kobyłecki",
+      "email" : "lukaszkobylecki@wp.pl"
+    }
+  ],
   "license": "ISC",
   "bin": {
     "json-to-sql": "lib/cli.js"
