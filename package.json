@@ -1,5 +1,5 @@
 {
-  "name": "json-to-sql",
+  "name": "json-to-rel",
   "version": "0.1.0",
   "description": "",
   "main": "src/cli.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tomaszgil/json-to-sql.git"
+    "url": "git+https://github.com/tomaszgil/json-to-rel.git"
   },
   "contributors": [
     {
@@ -25,12 +25,12 @@
   ],
   "license": "ISC",
   "bin": {
-    "json-to-sql": "lib/cli.js"
+    "json-to-rel": "lib/cli.js"
   },
   "bugs": {
-    "url": "https://github.com/tomaszgil/json-to-sql/issues"
+    "url": "https://github.com/tomaszgil/json-to-rel/issues"
   },
-  "homepage": "https://github.com/tomaszgil/json-to-sql#readme",
+  "homepage": "https://github.com/tomaszgil/json-to-rel#readme",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",

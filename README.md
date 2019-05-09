@@ -1,6 +1,6 @@
-# json-to-sql
+# json-to-rel
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1982b37edf4d44a0be92a2ffd304115b)](https://www.codacy.com/app/tomaszgil_2/json-to-sql?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tomaszgil/json-to-sql&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1982b37edf4d44a0be92a2ffd304115b)](https://www.codacy.com/app/tomaszgil_2/json-to-rel?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tomaszgil/json-to-rel&amp;utm_campaign=Badge_Grade)
 
 > Transform JSON data object to relational form (sql or csv)
 
@@ -11,13 +11,13 @@ This package allows you to transform valid json object to relational form. The o
 Using npm:
 
 ```sh
-npm install --global json-to-sql
+npm install --global json-to-rel
 ```
 
 or using yarn:
 
 ```sh
-yarn global add json-to-sql
+yarn global add json-to-rel
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ yarn global add json-to-sql
 Run the scipt using the command line
 
 ```sh
-json-to-sql -i input-file.json -m sql -o output-dir/
+json-to-rel -i input-file.json -m sql -o output-dir/
 ```
 
 ### Flags
@@ -70,7 +70,7 @@ You can pass your own configuration file, which will overrite default configurat
 
 YOu can find detailed information using help.
 ```sh
-json-to-sql --help
+json-to-rel --help
 ```
 
 ## Contributions
@@ -92,5 +92,5 @@ Feel free to fork this github repository to find ways to improve this package.
   
 ### Building and testing
 1.  Simulate package installation with `npm link`.
-2.  Run the program with `json-to-sql` command followed by arguments.
+2.  Run the program with `json-to-rel` command followed by arguments.
 3.  Remove package with `npm unlink`.
