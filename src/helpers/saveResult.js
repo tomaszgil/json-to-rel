@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { MODE_CSV, MODE_DDL } from '../core/outputModes';
+import { MODE_CSV, MODE_SQL } from '../core/outputModes';
 import { outputFileName } from '../../config.json';
 
 const saveResult = (tables, mode, path) => {
@@ -11,9 +11,9 @@ const saveResult = (tables, mode, path) => {
       });
       break;
     }
-    case MODE_DDL: {
+    case MODE_SQL: {
       const result = tables
-        .map(table => table.toDDL())
+        .map(table => table.toSQL())
         .join('\n');
       fs.writeFileSync(`${path}/${outputFileName}`, result);
       break;

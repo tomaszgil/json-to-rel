@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { MODE_CSV, MODE_DDL } from '../core/outputModes';
+import { MODE_CSV, MODE_SQL } from '../core/outputModes';
 
 const verifyArgs = (args) => {
   if (!args.input) {
@@ -25,9 +25,9 @@ const verifyArgs = (args) => {
     throw new Error(`"${args.output}" is not a directory.`);
   }
   if (!args.mode) {
-    throw new Error(`You have to specify mode ("${MODE_DDL}" or "${MODE_CSV}").`);
+    throw new Error(`You have to specify mode ("${MODE_SQL}" or "${MODE_CSV}").`);
   }
-  if (args.mode !== MODE_DDL && args.mode !== MODE_CSV) {
+  if (args.mode !== MODE_SQL && args.mode !== MODE_CSV) {
     throw new Error(`Invalid mode "${args.mode}".`);
   }
 };
