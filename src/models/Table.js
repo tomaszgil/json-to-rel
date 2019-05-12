@@ -4,13 +4,12 @@ import PrimaryKeyConstraint from './PrimaryKeyConstraint';
 import NotNullConstraint from './NotNullConstraint';
 
 import Logger, { LogMessage } from '../helpers/Logger';
-import { surrogatePrimaryKeyName, csvDelimiters } from '../../config.json';
-import createTableName from '../helpers/createTableName';
-import { MAX_TABLE_NAME_LENGTH } from '../core/dbConstants';
+import { surrogatePrimaryKeyName, csvDelimiters, truncateTableName } from '../../config.json';
+import { MAX_TABLE_NAME_LENGTH, TRUNCATED_NAME_LENGTH } from '../core/dbConstants';
 
 class Table {
   constructor(name, path) {
-    this.name = createTableName(name, path);
+    this.name = Table.createTableName(name, path);
 
     Logger.log(new LogMessage(`Table ${this.name} created.`, 1));
     if (this.name.length > MAX_TABLE_NAME_LENGTH) {
@@ -23,6 +22,17 @@ class Table {
 
   setAttributes(attributes) {
     this.attributes = [this.primaryKey, ...attributes];
+  }
+
+  static createTableName(name, path) {
+    if (!path && !name) return '';
+
+    let shortName = name;
+    if (truncateTableName && name) {
+      shortName = name.substring(0, TRUNCATED_NAME_LENGTH);
+    }
+
+    return path ? `${path}_${shortName}` : shortName;
   }
 
   static generatePrimaryKey() {
