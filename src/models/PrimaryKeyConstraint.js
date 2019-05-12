@@ -3,7 +3,7 @@ export default class PrimaryKeyConstraint {
     return 'PRIMARY KEY';
   }
 
-  toDDL() {
+  toSQL() {
     return this.constructor.label;
   }
 }

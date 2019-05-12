@@ -1,8 +1,12 @@
 # Source folder
 src/
 
-# Configuration files
-config.json
+# Output data files
+*.sql
+*.csv
+
+# Input data folder
+data/
 
 # Logs
 logs

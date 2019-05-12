@@ -37,7 +37,7 @@ class Logger {
   }
 
   writeToFile(message) {
-    fs.appendFileSync(this.file, this.constructor.prepareMessage(message));
+    fs.appendFileSync(this.file, `${this.constructor.prepareMessage(message)}\n`);
   }
 }
 

@@ -1,8 +1,11 @@
 import fs from 'fs';
-import { MODE_CSV, MODE_DDL } from '../core/outputModes';
+import { MODE_CSV, MODE_SQL } from '../core/outputModes';
 import { outputFileName } from '../../config.json';
+import Logger, { LogMessage } from './Logger';
 
 const saveResult = (tables, mode, path) => {
+  Logger.log(new LogMessage(`Saving result (path: '${path}').`));
+
   switch (mode) {
     case MODE_CSV: {
       tables.forEach((table) => {
@@ -11,9 +14,9 @@ const saveResult = (tables, mode, path) => {
       });
       break;
     }
-    case MODE_DDL: {
+    case MODE_SQL: {
       const result = tables
-        .map(table => table.toDDL())
+        .map(table => table.toSQL())
         .join('\n');
       fs.writeFileSync(`${path}/${outputFileName}`, result);
       break;

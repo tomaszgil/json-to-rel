@@ -1,6 +1,6 @@
 {
-  "name": "json-to-relational",
-  "version": "1.0.0",
+  "name": "json-to-rel",
+  "version": "0.1.0",
   "description": "",
   "main": "src/cli.js",
   "scripts": {
@@ -11,23 +11,32 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tomaszgil/json-to-relational.git"
+    "url": "git+https://github.com/tomaszgil/json-to-rel.git"
   },
-  "author": "",
+  "contributors": [
+    {
+      "name" : "Tomasz Gil",
+      "email" : "tomaszgil.dev@gmail.com"
+    },
+    {
+      "name" : "Łukasz Kobyłecki",
+      "email" : "lukaszkobylecki@wp.pl"
+    }
+  ],
   "license": "ISC",
   "bin": {
-    "json-to-relational": "lib/cli.js"
+    "json-to-rel": "lib/cli.js"
   },
   "bugs": {
-    "url": "https://github.com/tomaszgil/json-to-relational/issues"
+    "url": "https://github.com/tomaszgil/json-to-rel/issues"
   },
-  "homepage": "https://github.com/tomaszgil/json-to-relational#readme",
+  "homepage": "https://github.com/tomaszgil/json-to-rel#readme",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.4",
-    "babel-preset-airbnb": "^3.2.0",
+    "babel-preset-latest-node": "^3.1.1",
     "eslint": "^5.15.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",

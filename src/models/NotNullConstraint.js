@@ -3,7 +3,7 @@ export default class NotNullConstraint {
     return 'NOT NULL';
   }
 
-  toDDL() {
+  toSQL() {
     return this.constructor.label;
   }
 }
