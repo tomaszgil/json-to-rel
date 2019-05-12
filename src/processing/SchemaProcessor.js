@@ -68,7 +68,7 @@ class SchemaProcessor {
         parentKey.type,
         {
           foreignKey: new ForeignKeyConstraint(parentName, parentKey.name),
-          notNull: new NotNullConstraint(),
+          notNull: req && new NotNullConstraint(),
         },
       ));
       table.setAttributes(attributes);

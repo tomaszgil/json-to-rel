@@ -1,5 +1,4 @@
 import program from 'commander';
-import handleError from './handleError';
 import verifyArgs from './verifyArgs';
 import { MODE_CSV, MODE_SQL } from '../core/outputModes';
 
@@ -25,7 +24,8 @@ if (!program.logging) {
 try {
   verifyArgs(program);
 } catch (e) {
-  handleError(e);
+  console.log(e.message);
+  process.exit(1);
 }
 
 export default program;

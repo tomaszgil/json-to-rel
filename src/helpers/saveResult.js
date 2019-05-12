@@ -1,8 +1,11 @@
 import fs from 'fs';
 import { MODE_CSV, MODE_SQL } from '../core/outputModes';
 import { outputFileName } from '../../config.json';
+import Logger, { LogMessage } from './Logger';
 
 const saveResult = (tables, mode, path) => {
+  Logger.log(new LogMessage(`Saving result (path: '${path}').`));
+
   switch (mode) {
     case MODE_CSV: {
       tables.forEach((table) => {
