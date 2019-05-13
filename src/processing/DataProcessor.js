@@ -19,23 +19,23 @@ class SchemaProcessor {
   }
 
   process() {
-    this.processNode(rootTableName, this.json);
+    this.processNode(rootTableName, null, null, this.json);
     return this.dataTables;
   }
 
-  processNode(name, json, parentName, parentKey) {
+  processNode(name, parentName, parentId, json) {
     if (isObject(json)) {
-      const table = this.findTableByName(name);
-      const { id } = table;
+      const table = this.findTableByName(DataTable.createTableName(name, parentName));
+      const { id, name: createdName } = table;
       const values = {};
 
       Object.keys(json).forEach((key) => {
-        values[key] = this.processNode(key, json[key], name, id);
+        values[key] = this.processNode(key, createdName, id, json[key]);
       });
 
-      if (parentName && parentKey) {
+      if (parentName && parentId) {
         const fkName = ForeignKeyConstraint.getAttributeName(parentName);
-        values[fkName] = parentKey;
+        values[fkName] = parentId;
       }
 
       table.createRecord(values);
@@ -44,7 +44,7 @@ class SchemaProcessor {
     }
 
     if (Array.isArray(json)) {
-      json.forEach(value => this.processNode(name, value, parentName, parentKey));
+      json.forEach(value => this.processNode(name, parentName, parentId, value));
       return null;
     }
 

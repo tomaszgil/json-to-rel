@@ -33,9 +33,15 @@ class SchemaProcessor {
   }
 
   processNode(name, req, parentTable, schema) {
+    let parentName;
+
+    if (parentTable) {
+      parentName = parentTable.name;
+    }
+
     if (schema.type === TYPE_OBJECT) {
       const { properties } = schema;
-      const table = new Table(name);
+      const table = new Table(name, parentName);
       const attributes = this.processAttributes(
         properties, Object.keys(properties), table,
       );
@@ -56,9 +62,9 @@ class SchemaProcessor {
     }
 
     if (schema.type === TYPE_ARRAY) {
-      const { primaryKey: parentKey, name: parentName } = parentTable;
+      const { primaryKey: parentKey } = parentTable;
       const { required, properties } = schema.items;
-      const table = new Table(name);
+      const table = new Table(name, parentName);
       const attributes = this.processAttributes(
         properties, required, table,
       );

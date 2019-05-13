@@ -11,18 +11,6 @@ class Decorator extends Table {
         this[name] = component[name];
       });
   }
-
-  setAttributes(attributes) {
-    this.component.setAttributes(attributes);
-  }
-
-  static generatePrimaryKey() {
-    return Table.generatePrimaryKey();
-  }
-
-  toSQL() {
-    return this.component.toSQL();
-  }
 }
 
 class DataTable extends Decorator {
