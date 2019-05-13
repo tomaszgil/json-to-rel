@@ -30,6 +30,12 @@ const verifyArgs = (args) => {
   if (args.mode !== MODE_SQL && args.mode !== MODE_CSV) {
     throw new Error(`Invalid mode "${args.mode}".`);
   }
+  if (args.config && !fs.existsSync(args.config)) {
+    throw new Error(`File ${args.config} does not exist.`);
+  }
+  if (path.extname(args.config).toLowerCase() !== '.json') {
+    throw new Error(`"${args.config}" is not a JSON file.`);
+  }
 };
 
 export default verifyArgs;

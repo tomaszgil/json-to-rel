@@ -10,10 +10,11 @@ program
   .option('-m, --mode <mode>', `program mode: "${MODE_SQL}" or "${MODE_CSV}"`, toLowerCase)
   .option('-o, --output <dir>', 'path to output directory')
   .option('-l, --logging', 'turn on logging')
+  .option('-c, --config <file>', 'pass config file')
   .on('--help', () => {
     console.log('');
     console.log('Example:');
-    console.log('  $ json-to-rel -i ./input.json -m sql -o ./output -l');
+    console.log('  $ json-to-rel -i ./input.json -m sql -o ./output -l -c ./config.json');
   })
   .parse(process.argv);
 
