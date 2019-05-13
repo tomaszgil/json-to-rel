@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { MODE_CSV, MODE_SQL } from '../core/outputModes';
-import { outputFileName } from '../../config.json';
+import config from './config';
 import Logger, { LogMessage } from './Logger';
 
 const saveResult = (tables, mode, path) => {
@@ -18,7 +18,7 @@ const saveResult = (tables, mode, path) => {
       const result = tables
         .map(table => table.toSQL())
         .join('\n');
-      fs.writeFileSync(`${path}/${outputFileName}`, result);
+      fs.writeFileSync(`${path}/${config.outputFileName}`, result);
       break;
     }
     default: break;

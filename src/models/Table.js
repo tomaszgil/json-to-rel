@@ -4,7 +4,7 @@ import PrimaryKeyConstraint from './PrimaryKeyConstraint';
 import NotNullConstraint from './NotNullConstraint';
 
 import Logger, { LogMessage } from '../helpers/Logger';
-import { surrogatePrimaryKeyName, csvDelimiters, truncateTableName } from '../../config.json';
+import config from '../helpers/config';
 import { MAX_TABLE_NAME_LENGTH, TRUNCATED_NAME_LENGTH } from '../core/dbConstants';
 
 class Table {
@@ -28,7 +28,7 @@ class Table {
     if (!path && !name) return '';
 
     let shortName = name;
-    if (truncateTableName && name) {
+    if (config.truncateTableName && name) {
       shortName = name.substring(0, TRUNCATED_NAME_LENGTH);
     }
 
@@ -37,7 +37,7 @@ class Table {
 
   static generatePrimaryKey() {
     const primaryKey = new Attribute(
-      surrogatePrimaryKeyName,
+      config.surrogatePrimaryKeyName,
       DB_TYPE_INTEGER,
       {
         primaryKey: new PrimaryKeyConstraint(),
@@ -56,7 +56,7 @@ class Table {
   }
 
   toCSV() {
-    const { col } = csvDelimiters;
+    const { col } = config.csvDelimiters;
     return this.attributes
       .map(a => a.toCSV())
       .join(col);

@@ -1,4 +1,4 @@
-import { surrogatePrimaryKeyName } from '../../config.json';
+import config from '../helpers/config';
 
 export default class ForeignKeyConstraint {
   static get label() {
@@ -6,7 +6,7 @@ export default class ForeignKeyConstraint {
   }
 
   static getAttributeName(tableName) {
-    return `${tableName}${surrogatePrimaryKeyName}`;
+    return `${tableName}${config.surrogatePrimaryKeyName}`;
   }
 
   constructor(table, field) {

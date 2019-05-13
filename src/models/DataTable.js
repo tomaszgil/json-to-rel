@@ -1,5 +1,5 @@
 import Table from './Table';
-import { csvDelimiters } from '../../config.json';
+import config from '../helpers/config';
 
 class Decorator extends Table {
   constructor(component) {
@@ -35,7 +35,7 @@ class DataTable extends Decorator {
   }
 
   toCSV() {
-    const { row, col } = csvDelimiters;
+    const { row, col } = config.csvDelimiters;
     const header = super.toCSV();
     const values = this.data
       .map(dataRow => dataRow.join(col))

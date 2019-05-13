@@ -1,6 +1,6 @@
 import isObject from '../helpers/isObject';
 import Logger, { LogMessage } from '../helpers/Logger';
-import { generatedAttributeName } from '../../config.json';
+import config from '../helpers/config';
 
 const preprocessing = (json) => {
   const processed = json;
@@ -19,7 +19,7 @@ const preprocessing = (json) => {
       processed[key] = preprocessing(processed[key]);
     } else if (Array.isArray(processed)) {
       processed[key] = {
-        [generatedAttributeName]: processed[key],
+        [config.generatedAttributeName]: processed[key],
       };
     }
   });
