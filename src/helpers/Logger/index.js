@@ -4,7 +4,9 @@ import LogMessage from './LogMessage';
 import config from '../config';
 import args from '../arguments';
 
-const LoggerInstance = new Logger(args.logging, config.logFile, config.logLevel);
+const { logFile, logLevel } = config;
+
+const LoggerInstance = new Logger(args.logging, logFile, logLevel);
 
 export {
   LoggerInstance as default,

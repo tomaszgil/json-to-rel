@@ -1,12 +1,14 @@
 import config from '../helpers/config';
 
+const { surrogatePrimaryKeyName } = config;
+
 export default class ForeignKeyConstraint {
   static get label() {
     return 'REFERENCES';
   }
 
   static getAttributeName(tableName) {
-    return `${tableName}${config.surrogatePrimaryKeyName}`;
+    return `${tableName}${surrogatePrimaryKeyName}`;
   }
 
   constructor(table, field) {
