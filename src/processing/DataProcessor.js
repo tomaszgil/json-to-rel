@@ -4,8 +4,6 @@ import ForeignKeyConstraint from '../models/ForeignKeyConstraint';
 import isObject from '../helpers/isObject';
 import config from '../helpers/config';
 
-const { rootTableName } = config;
-
 class SchemaProcessor {
   constructor(tables, json) {
     this.json = json;
@@ -21,6 +19,8 @@ class SchemaProcessor {
   }
 
   process() {
+    const { rootTableName } = config;
+
     this.processNode(rootTableName, null, null, this.json);
     return this.dataTables;
   }

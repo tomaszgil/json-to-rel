@@ -5,7 +5,6 @@ import config from '../config';
 import args from '../arguments';
 
 const { logFile, logLevel } = config;
-
 const LoggerInstance = new Logger(args.logging, logFile, logLevel);
 
 export {

@@ -7,8 +7,6 @@ import Logger, { LogMessage } from '../helpers/Logger';
 import config from '../helpers/config';
 import { MAX_TABLE_NAME_LENGTH, TRUNCATED_NAME_LENGTH } from '../core/dbConstants';
 
-const { csvDelimiters, surrogatePrimaryKeyName, truncateTableName } = config;
-
 class Table {
   constructor(name, path) {
     this.name = Table.createTableName(name, path);
@@ -30,6 +28,8 @@ class Table {
     if (!path && !name) return '';
 
     let shortName = name;
+    const { truncateTableName } = config;
+
     if (truncateTableName && name) {
       shortName = name.substring(0, TRUNCATED_NAME_LENGTH);
     }
@@ -38,6 +38,7 @@ class Table {
   }
 
   static generatePrimaryKey() {
+    const { surrogatePrimaryKeyName } = config;
     const primaryKey = new Attribute(
       surrogatePrimaryKeyName,
       DB_TYPE_INTEGER,
@@ -58,6 +59,7 @@ class Table {
   }
 
   toCSV() {
+    const { csvDelimiters } = config;
     const { col } = csvDelimiters;
     return this.attributes
       .map(a => a.toCSV())

@@ -12,8 +12,6 @@ import {
   TYPE_OBJECT, TYPE_STRING, TYPE_ARRAY, TYPE_NUMBER, TYPE_BOOLEAN,
 } from '../core/schemaTypes';
 
-const { rootTableName } = config;
-
 class SchemaProcessor {
   constructor(schema) {
     this.tables = [];
@@ -21,6 +19,8 @@ class SchemaProcessor {
   }
 
   process() {
+    const { rootTableName } = config;
+
     this.processNode(rootTableName, null, null, this.schema);
     return this.tables;
   }

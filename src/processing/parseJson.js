@@ -3,10 +3,10 @@ import handleError from '../helpers/handleError';
 import Logger, { LogMessage } from '../helpers/Logger';
 import config from '../helpers/config';
 
-const { inputFileEncoding } = config;
-
 const parseJson = (path) => {
   Logger.log(new LogMessage(`Reading file (path: '${path}').`));
+
+  const { inputFileEncoding } = config;
   const file = fs.readFileSync(path, inputFileEncoding);
 
   try {
