@@ -56,13 +56,13 @@ You can pass your own configuration file, which will overrite default configurat
   "outputFileName": "tables.sql",
   "rootTableName": "GENERATED",
   "surrogatePrimaryKeyName": "__ID",
-  "logLevel": 0,
   "logFile": "json2rel.log",
   "csvDelimiters": {
     "col": ";",
     "row": "\n"
   },
-  "generatedAttributeName": "value"
+  "generatedAttributeName": "value",
+  "truncateTableName": false
 }
 ```
 
@@ -78,9 +78,12 @@ json-to-rel --help
 Feel free to fork this github repository to find ways to improve this package.
 
 ### Development
-1.  Install dependencies with `npm install`.
+1.  Install dependencies
+    ```sh
+    npm install
+    ```
 
-2.  Run script with nodemon 
+2.  Run script
     ```sh
     npm start
     ```
