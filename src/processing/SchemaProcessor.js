@@ -3,7 +3,7 @@ import Attribute from '../models/Attribute';
 import NotNullConstraint from '../models/NotNullConstraint';
 import ForeignKeyConstraint from '../models/ForeignKeyConstraint';
 
-import { rootTableName } from '../../config.json';
+import config from '../helpers/config';
 
 import {
   DB_TYPE_STRING, DB_TYPE_NUMBER, DB_TYPE_INTEGER,
@@ -19,6 +19,8 @@ class SchemaProcessor {
   }
 
   process() {
+    const { rootTableName } = config;
+
     this.processNode(rootTableName, null, null, this.schema);
     return this.tables;
   }

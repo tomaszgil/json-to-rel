@@ -17,7 +17,7 @@ class Logger {
   }
 
   log(message) {
-    if (!this.enabled || this.logLevel >= message.logLevel) {
+    if (!this.enabled || this.logLevel < message.logLevel) {
       return;
     }
 

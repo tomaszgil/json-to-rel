@@ -2,7 +2,7 @@ import DataTable from '../models/DataTable';
 import ForeignKeyConstraint from '../models/ForeignKeyConstraint';
 
 import isObject from '../helpers/isObject';
-import { rootTableName } from '../../config.json';
+import config from '../helpers/config';
 
 class SchemaProcessor {
   constructor(tables, json) {
@@ -19,6 +19,8 @@ class SchemaProcessor {
   }
 
   process() {
+    const { rootTableName } = config;
+
     this.processNode(rootTableName, null, null, this.json);
     return this.dataTables;
   }

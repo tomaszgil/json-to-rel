@@ -1,9 +1,10 @@
 import isObject from '../helpers/isObject';
 import Logger, { LogMessage } from '../helpers/Logger';
-import { generatedAttributeName } from '../../config.json';
+import config from '../helpers/config';
 
 const preprocessing = (json) => {
   const processed = json;
+  const { generatedAttributeName } = config;
 
   Object.keys(processed).forEach((key) => {
     if (Array.isArray(processed[key])) {

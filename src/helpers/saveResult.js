@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { MODE_CSV, MODE_SQL } from '../core/outputModes';
-import { outputFileName } from '../../config.json';
+import config from './config';
 import Logger, { LogMessage } from './Logger';
 
 const saveResult = (tables, mode, path) => {
@@ -15,6 +15,7 @@ const saveResult = (tables, mode, path) => {
       break;
     }
     case MODE_SQL: {
+      const { outputFileName } = config;
       const result = tables
         .map(table => table.toSQL())
         .join('\n');

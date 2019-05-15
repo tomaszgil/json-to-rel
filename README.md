@@ -68,7 +68,7 @@ You can pass your own configuration file, which will overrite default configurat
 
 ### More information
 
-YOu can find detailed information using help.
+You can find detailed information using help.
 ```sh
 json-to-rel --help
 ```
