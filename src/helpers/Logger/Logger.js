@@ -3,16 +3,20 @@ import fs from 'fs';
 import { hostname } from 'os';
 
 class Logger {
-  constructor(enabled, file, logLevel) {
-    this.enabled = enabled;
-    this.logLevel = Number.isNaN(logLevel) ? 0 : logLevel;
-
-    if (file) {
-      this.logToFile = true;
-      this.file = path.join(path.dirname(require.main.filename), '../', file);
+  constructor(logLevel, file) {
+    if (Number.isNaN(Number.parseInt(logLevel, 10))) {
+      this.enabled = false;
     } else {
-      this.logToFile = false;
-      this.file = '';
+      this.enabled = true;
+      this.logLevel = Number.isNaN(logLevel) ? 0 : logLevel;
+
+      if (file) {
+        this.logToFile = true;
+        this.file = path.join(path.dirname(require.main.filename), '../', file);
+      } else {
+        this.logToFile = false;
+        this.file = '';
+      }
     }
   }
 

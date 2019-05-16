@@ -47,7 +47,7 @@ json-to-rel -i input-file.json -m sql -o output-dir/
 
     A set of `.csv` files with set with file names corresponding to table names. Each file contains a header with table column names and rows which correspond to table records with values from input json object.
 
-### Configutation file
+### Configuration file
 
 You can pass your own configuration file, which will overrite default configuration. Your configuration file can look like this.
 ```json
