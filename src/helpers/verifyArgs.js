@@ -36,6 +36,9 @@ const verifyArgs = (args) => {
   if (path.extname(args.config).toLowerCase() !== '.json') {
     throw new Error(`"${args.config}" is not a JSON file.`);
   }
+  if (args.logging && Number.isNaN(Number.parseInt(args.logging, 10))) {
+    throw new Error('Logging level must be an integer [0, 1, 2].');
+  }
 };
 
 export default verifyArgs;
