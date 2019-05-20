@@ -30,27 +30,27 @@ json-to-rel -i input-file.json -m sql -o output-dir/
 
 ### Flags
 
-| Setting | Short flag | Full flag | Values |
-|---|---|---|---|
-| **Input file** | -i | --input | path/to/file.json |
-| **Output directory** | -o | --output | path/to/direcory/ |
-| **Mode** | -m | --mode | [sql, csv] |
-| **Logging** | -l | --logging | [0, 1, 2] |
-| **Configuration file** | -c | --config | path/to/file.json |
+| Setting | Description | Short flag | Full flag | Values |
+|---|---|---|---|---|
+| **Input file** | Path to a file with input JSON object | -i | --input | path/to/file.json |
+| **Output directory** | Path to a directory in which the application will store files with the results of the processing | -o | --output | path/to/direcory/ |
+| **Mode** | Type of data and files that will be generated | -m | --mode | sql \| csv |
+| **Logging** | Activating optional logging to a file with log’s level of detail (the higher the value, the more detailed the log messages) | -l | --logging | 0 \| 1 \| 2 |
+| **Configuration file** | Path to file with additional configuration JSON object | -c | --config | path/to/file.json |
 
 ### Ouput
 1.  **SQL**
     
-    A `.sql` file with set of `create table` statements representing relational tables mapped from json object. Each table featutes a surrogate primary key. Tables are connected with foreign key constraints. Syntax is compliant with `Sqlite 3`.
+    A `.sql` file with a set of `create table` statements representing relational tables mapped from json object. Each table featutes a surrogate primary key. Tables are connected with foreign key constraints. Syntax is compliant with `Sqlite 3`.
 
 1.  **CSV**
 
-    A set of `.csv` files with set with file names corresponding to table names. Each file contains a header with table column names and rows which correspond to table records with values from input json object.
+    A set of `.csv` files with file names corresponding to table names. Each file contains a header with table column names and rows which correspond to table records with values from input json object.
 
 ### Configuration file
 
-You can pass your own configuration file, which will overrite default configuration. Your configuration file can look like this.
-```json
+You can pass your own configuration file, which will override default configuration. Your configuration file can look like this.
+```javascript
 {
   "inputFileEncoding": "utf8",
   "outputFileName": "tables.sql",
