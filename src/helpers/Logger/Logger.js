@@ -12,7 +12,7 @@ class Logger {
 
       if (file) {
         this.logToFile = true;
-        this.file = path.join(path.dirname(require.main.filename), '../', file);
+        this.file = path.resolve(file);
       } else {
         this.logToFile = false;
         this.file = '';
