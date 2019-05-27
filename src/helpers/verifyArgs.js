@@ -33,7 +33,7 @@ const verifyArgs = (args) => {
   if (args.config && !fs.existsSync(args.config)) {
     throw new Error(`File ${args.config} does not exist.`);
   }
-  if (path.extname(args.config).toLowerCase() !== '.json') {
+  if (args.config && path.extname(args.config).toLowerCase() !== '.json') {
     throw new Error(`"${args.config}" is not a JSON file.`);
   }
   if (args.logging && Number.isNaN(Number.parseInt(args.logging, 10))) {
